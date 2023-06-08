@@ -25,9 +25,13 @@ urlcolor: blue
 fontsize: 12pt
 biblio-style: apalike
 abstract: |
-The power of nuclear energy sources and mass destruction weapons were discovered in early 1930's. From that time, nuclear energy has been used for multiple purposes. Although, it has some benefits to both humanity and environment, it has multiple threts against living creatures.
-To determine which country is responsible for nuclear explosions that occurred all around the world.
-Data set from github were used with data-based table, garph and map. Then hypothesis testing was used to obtain convincing implications.
+    **Background**
+    Nuclear power has been used for a long time in order to create power and make mass destruction weapons. Although, nuclear power is beneficial for the world and humanity, it can be very hazardous for living forms.
+    **Purpose**
+    To define which country is responsible for these nuclear explotions
+    **Methods**
+    Table, graph, and map are used to obtain data to make inferences. Then hypothesis testing is being applied to answer "who is responsible" question.
+ 
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
