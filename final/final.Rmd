@@ -25,7 +25,9 @@ urlcolor: blue
 fontsize: 12pt
 biblio-style: apalike
 abstract: |
-    Write your abstract here.
+The power of nuclear energy sources and mass destruction weapons were discovered in early 1930's. From that time, nuclear energy has been used for multiple purposes. Although, it has some benefits to both humanity and environment, it has multiple threts against living creatures.
+To determine which country is responsible for nuclear explosions that occurred all around the world.
+Data set from github were used with data-based table, garph and map. Then hypothesis testing was used to obtain convincing implications.
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
@@ -36,11 +38,8 @@ knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FAL
 <!-- ======================================================================= -->
 [^1]: 20080399, [Github Repo](https://github.com/abdulhkmsrc/Final-work)
 
-
-\colorbox{WildStrawberry}{Read the README.md file in the project folder for more information.}
-
 # Introduction
-The second world war ended in 1945 with two nuclear explosion in Japan, Nagasaki and Hiroshima. After that situation, the importance of nuclear power was understood by allied powers that were able to be named as winners of the second world war. After that war, the cold war began. Old allies became new enemies. In order to win the arms race, two enemies started developing nuclear weapons and tested them in deserts, oceans, islands and etc [@jacobs2013nuclear]. Different explosion methods, different nuclear energy sources were used in order to find perfect way to create the perfect Armageddon weapon. Luckily, there has been no usage of nuclear power to destroy a nation. However, as I have said before, these weapons were tested and these tests have harmed our environment in a very bad way. In my article, my aim is to find which country is more responsible for these harmful actions that have been created by nuclear explosions. I have found my data from https://github.com/rfordatascience/tidytuesday/tree/master/data and the name of my data is "nuclear explosions" This data include 1,382 observations with 16 columns. These columns include country names, nuclear explosion sources, year, purpose and the others. I have selected this data to figure out which country harmed most by creating nuclear explosions. 
+The second world war ended in 1945 with two nuclear explosion in Japan, Nagasaki and Hiroshima. After that situation, the importance of nuclear power was understood by allied powers that were able to be named as winners of the second world war. After that war, the cold war began. Old allies became new enemies. In order to win the arms race, two enemies started developing nuclear weapons and tested them in deserts, oceans, islands and etc [@jacobs2013nuclear]. Different explosion methods, different nuclear energy sources were used in order to find perfect way to create the perfect Armageddon weapon. Luckily, there has been no usage of nuclear power to destroy a nation. However, as I have said before, these weapons were tested and these tests have harmed our environment in a very bad way. In my article, my aim is to find which country is more responsible for these harmful actions that have been created by nuclear explosions. I have found my data from https://github.com/rfordatascience/tidytuesday/tree/master/data and the name of my data is "nuclear explosions" This data include 2,046 observations with 16 columns. These columns include country names, nuclear explosion sources, year, purpose and the others. I have selected this data to figure out which country harmed most by creating nuclear explosions. 
 To put my purpose, aim into reality, I have chosen my research question as **Which country is more responsible for the damage to the environment that live in and living life forms due to nuclear explosions?** I have found academic articles that are relevant to my question and help to reach my aim, however I have chosen four of them to review.      
 
 ## Literature Review
@@ -50,17 +49,7 @@ later integrated into the CO2, and then reaches the marine environment, by means
 additional explosions have been conducted by seven countries (China, France, India, Pakistan, the Soviet Union, the United Kingdom, and the United States) during 1945-1998, according to information in the Nuclear Explosion Database at the Center for Monitoring Research (CMR)." 1056 nuclear explosions were made by U.S and 715 by the Soviet Union, it is clear and easy to say by accordance of numerical observations made and recorded the U.s seems to be responsible for biological and environmental damage that occurred due to explosions. Since, in the article @pruavualie2014nuclear clears that the areas the **U.S** made nuclear test in its own mainland some disorders that have a huge relations with radioactivity such as **Thyroid Cancer** has been more common since the nuclear test had begun. However, to speak in more certain terms, more research and observations are needed.
 
 # Data
-In this section, discuss the source of the data set you use in your study, if you have done any operation on the raw data, these operations and the summary statistics about the data set. In this section, it is mandatory to have a table (Table \ref{tab:summary}) containing summary statistics (mean, standard deviation, minimum, maximum, etc. values) of all variables. Make the necessary references to your tables as shown in the previous sentence [@perkins:1991].
-
-R codes for the analysis should start in this section. In this section, you should include the codes that imports the data set into R and the codes that generate summary statistics.
-
-```{r}
-library(tidyverse)
-library(here)
-survey <- read_csv(here("data/survey.csv"))
-```
-
-Note that code options are edited in some of the code chunks in the Rmd file.
+The data set that has been chosen for this survey consists of 2046 observations. By making these huge amount of observations, 16 numerical and characteristic variables were used to obtain data frames. In the table below, "Location.Cordinates.Longitude", "Location.Cordinates.Latitude", Date.Month", and "Date.Year" have been examined in terms of values of "mean", "standard deviation", "min-", "max", and "median" in order to make assumptions. By looking the mean values of longitude and latitude of  nuclear explosions occurred, it can be observed by making research on these two data, most of explosions happened in Nevada, U.S. So with these information, it can be easily say that United States made most of explosions between 1945 and 1998.  
 
 ```{r, echo=FALSE}
 library(xtable) 
@@ -71,14 +60,13 @@ st_options(lang = "en")
 With the `echo=FALSE` option, prevent the codes from appearing in the derived pdf file and report your results in tables.
 
 ```{r results='asis', echo=FALSE}
-survey %>%
-  select("sex", "credits", "handedness", "height", "handspan") %>% 
-  descr(stats = c("mean", "sd", "min", "med", "max"), transpose = TRUE) %>% 
-  xtable(caption = "Summary Statistics",
-         label = "tab:summary",
-         align = c("l", "c", "c", "c", "c", "c")) %>% 
-  print(booktabs = TRUE, comment = FALSE, caption.placement = "top")
+ggplot(nuclear_explosions, aes(x = Date.Year)) +
+       geom_bar() + scale_x_continuous(name = "Years") +
+    scale_y_continuous(name = "Number of Explosions") +
+    ggtitle("Nuclear Explosions From 1945-1998")
 ```
+In addition to table, the graph in above shows the relationship between the number that are ranged from 0 to 175 of nuclear explosions and years between 1945 and 1998 that these explosions happened by using data that was used in previous research. This graph explains that most of nuclear explosions happened in 1962. This year, 1962, was the most dangerous and hardest time in terms of cold war @ekmen2021zorlayici. Both superpowers, United States and Soviet Union, were one step ahead nuclear war, so they made lots of nuclear weapon test in order to spread horror and terror to the enemy.
+Buraya harita ile igili yapılacak
 
 
 # Methods and Data Analysis
@@ -94,12 +82,7 @@ This section should also include different tables and plots. You can add histogr
 
 
 ```{r plot, fig.align='center', fig.cap='An Awesome Plot'}
-survey %>% 
-  ggplot(aes(x = handedness, y = handspan)) +
-  geom_point() +
-  geom_smooth() +
-  scale_x_continuous("Handedness") + 
-  scale_y_continuous("Handspan")
+ 
 ```
 
 
