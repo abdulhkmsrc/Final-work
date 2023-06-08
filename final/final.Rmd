@@ -64,10 +64,7 @@ st_options(lang = "en")
 With the `echo=FALSE` option, prevent the codes from appearing in the derived pdf file and report your results in tables.
 
 ```{r results='asis', echo=FALSE}
-ggplot(nuclear_explosions, aes(x = Date.Year)) +
-       geom_bar() + scale_x_continuous(name = "Years") +
-    scale_y_continuous(name = "Number of Explosions") +
-    ggtitle("Nuclear Explosions From 1945-1998")
+
 ```
 In addition to table, the graph in above shows the relationship between the number that are ranged from 0 to 175 of nuclear explosions and years between 1945 and 1998 that these explosions happened by using data that was used in previous research. This graph explains that most of nuclear explosions happened in 1962. This year, 1962, was the most dangerous and hardest time in terms of cold war @ekmen2021zorlayici. Both superpowers, United States and Soviet Union, were one step ahead nuclear war, so they made lots of nuclear weapon test in order to spread horror and terror to the enemy.
 Buraya harita ile igili yapılacak
