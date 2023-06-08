@@ -26,11 +26,11 @@ fontsize: 12pt
 biblio-style: apalike
 abstract: |
     **Background**
-    Nuclear power has been used for a long time in order to create power and make mass destruction weapons. Although, nuclear power is beneficial for the world and humanity, it can be very hazardous for living forms.
+    :Nuclear power has been used for a long time in order to create power and make mass destruction weapons. Although, nuclear power is beneficial for the world and humanity, it can be very hazardous for living forms.
     **Purpose**
-    To define which country is responsible for these nuclear explotions
+    :To define which country is responsible for these nuclear explotions
     **Methods**
-    Table, graph, and map are used to obtain data to make inferences. Then hypothesis testing is being applied to answer "who is responsible" question.
+    :Table, graph, and map are used to obtain data to make inferences. Then hypothesis testing is being applied to answer "who is responsible" question.
  
 ---
 ```{r setup, include=FALSE}
