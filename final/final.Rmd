@@ -30,71 +30,150 @@ abstract: |
     **Purpose**
     :To define which country is responsible for these nuclear explotions
     **Methods**
-    :Table, graph, and map are used to obtain data to make inferences. Then hypothesis testing is being applied to answer "who is responsible" question.
- 
+    :Table, graph, and map are used to obtain data to make inferences.
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
 ```
 
 <!-- ======================================================================= -->
+
 <!-- ============================== FOOTNOTES ============================== -->
+
 <!-- ======================================================================= -->
-[^1]: 20080399, [Github Repo](https://github.com/abdulhkmsrc/Final-work)
 
 # Introduction
-The second world war ended in 1945 with two nuclear explosion in Japan, Nagasaki and Hiroshima. After that situation, the importance of nuclear power was understood by allied powers that were able to be named as winners of the second world war. After that war, the cold war began. Old allies became new enemies. In order to win the arms race, two enemies started developing nuclear weapons and tested them in deserts, oceans, islands and etc [@jacobs2013nuclear]. Different explosion methods, different nuclear energy sources were used in order to find perfect way to create the perfect Armageddon weapon. Luckily, there has been no usage of nuclear power to destroy a nation. However, as I have said before, these weapons were tested and these tests have harmed our environment in a very bad way. In my article, my aim is to find which country is more responsible for these harmful actions that have been created by nuclear explosions. I have found my data from https://github.com/rfordatascience/tidytuesday/tree/master/data and the name of my data is "nuclear explosions" This data include 2,046 observations with 16 columns. These columns include country names, nuclear explosion sources, year, purpose and the others. I have selected this data to figure out which country harmed most by creating nuclear explosions. 
-To put my purpose, aim into reality, I have chosen my research question as **Which country is more responsible for the damage to the environment that live in and living life forms due to nuclear explosions?** I have found academic articles that are relevant to my question and help to reach my aim, however I have chosen four of them to review.      
+
+The second world war ended in 1945 with two nuclear explosion in Japan, Nagasaki and Hiroshima. After that situation, the importance of nuclear power was understood by allied powers that were able to be named as winners of the second world war. After that war, the cold war began. Old allies became new enemies. In order to win the arms race, two enemies started developing nuclear weapons and tested them in deserts, oceans, islands and etc [@jacobs2013nuclear]. Different explosion methods, different nuclear energy sources were used in order to find perfect way to create the perfect Armageddon weapon. Luckily, there has been no usage of nuclear power to destroy a nation. However, as I have said before, these weapons were tested and these tests have harmed our environment in a very bad way. In my article, my aim is to find which country is more responsible for these harmful actions that have been created by nuclear explosions. I have found my data from <https://github.com/rfordatascience/tidytuesday/tree/master/data> and the name of my data is "nuclear explosions" This data include 2,046 observations with 16 columns. These columns include country names, nuclear explosion sources, year, purpose and the others. I have selected this data to figure out which country harmed most by creating nuclear explosions. To put my purpose, aim into reality, I have chosen my research question as **Which country is more responsible for the damage to the environment that live in and living life forms due to nuclear explosions?** I have found academic articles that are relevant to my question and help to reach my aim, however I have chosen four of them to review.
 
 ## Literature Review
-It is a very well documented fact that nuclear explosions destroy our environment and our own bodies @arda2006nukleer. It can be understood from the data I have chosen and the @ruff2015humanitarian that the huge majority of nuclear explosions have happened due to testing nuclear weapons. @ruff2015humanitarian says quote: "Apart from the two bombs dropped on Hiroshima and Nagasaki, and 150 explosions which were ostensibly “peaceful”,
-3 the rest have been for the purpose of developing new nuclear weapons (making them more destructive, more compact and more deliverable), understanding their effects and developing plans for their use." Because of these test people that have lived in these test regions, **Pacific Ocean**, may develop genetic mutations and these mutations can trigger genetic disorders such as cancer. The test made around Pacific Ocean, were done by three countries, **U.K**, **France**, and **U.S**. However, U.s. made the majority of these tests. In addition to harmful and hazardous effect on human health, these nuclear explosions have harmed our environment. Mostly, nuclear test were done in oceans. Ongoing observations and research indicate that Pacific and Atlantic Oceans were detected higher radioactivity than other Oceans. @aarkrog2003input. It can be understood that these two oceans were often used for nuclear experiments so the highest percentage of nuclear radioactivity from these oceans belongs to nuclear explosions made by humans. In addition to oceans, our world's atmosphere can also be effected from nuclear explosions badly. Radioactivity that occurs when a nuclear explosion takes place can play an important role on climate changes that occur due to chancing the balance of elements in **atmosphere** and radioactive pollution. @pruavualie2014nuclear quote: "The indirect transfer of radionuclides into the geospheres and their accumulation in living cells, by way of the food chain, was yet another form of radioactive contamination of the marine and terrestrial ecosystems. One of the most representative examples is the isotope 14C released into the atmosphere during nuclear tests, which is
-later integrated into the CO2, and then reaches the marine environment, by means of the ocean–atmosphere gas exchange, or the biosphere through the process of photosynthesis." In this article it is also quoted that most of these nuclear test and the most harmful ones were conducted by **Soviet Union**, a socialist union consisted of 15 countries, collapsed in 1991, and the **U.S**. When all articles that I have reviewed taken into account, the hazard of nuclear explosions for both living creatures and environment can be understood easily. However, since the research question, **Who is more responsible**, is not that easy. When the article @yang2003worldwide is examined, quote: "Since then there is evidence that 2039
-additional explosions have been conducted by seven countries (China, France, India, Pakistan, the Soviet Union, the United Kingdom, and the United States) during 1945-1998, according to information in the Nuclear Explosion Database at the Center for Monitoring Research (CMR)." 1056 nuclear explosions were made by U.S and 715 by the Soviet Union, it is clear and easy to say by accordance of numerical observations made and recorded the U.s seems to be responsible for biological and environmental damage that occurred due to explosions. Since, in the article @pruavualie2014nuclear clears that the areas the **U.S** made nuclear test in its own mainland some disorders that have a huge relations with radioactivity such as **Thyroid Cancer** has been more common since the nuclear test had begun. However, to speak in more certain terms, more research and observations are needed.
+
+It is a very well documented fact that nuclear explosions destroy our environment and our own bodies @arda2006nukleer. It can be understood from the data I have chosen and the @ruff2015humanitarian that the huge majority of nuclear explosions have happened due to testing nuclear weapons. @ruff2015humanitarian says quote: "Apart from the two bombs dropped on Hiroshima and Nagasaki, and 150 explosions which were ostensibly"peaceful", 3 the rest have been for the purpose of developing new nuclear weapons (making them more destructive, more compact and more deliverable), understanding their effects and developing plans for their use." Because of these test people that have lived in these test regions, **Pacific Ocean**, may develop genetic mutations and these mutations can trigger genetic disorders such as cancer. The test made around Pacific Ocean, were done by three countries, **U.K**, **France**, and **U.S**. However, U.s. made the majority of these tests. In addition to harmful and hazardous effect on human health, these nuclear explosions have harmed our environment. Mostly, nuclear test were done in oceans. Ongoing observations and research indicate that Pacific and Atlantic Oceans were detected higher radioactivity than other Oceans. @aarkrog2003input. It can be understood that these two oceans were often used for nuclear experiments so the highest percentage of nuclear radioactivity from these oceans belongs to nuclear explosions made by humans. In addition to oceans, our world's atmosphere can also be effected from nuclear explosions badly. Radioactivity that occurs when a nuclear explosion takes place can play an important role on climate changes that occur due to chancing the balance of elements in **atmosphere** and radioactive pollution. @pruavualie2014nuclear quote: "The indirect transfer of radionuclides into the geospheres and their accumulation in living cells, by way of the food chain, was yet another form of radioactive contamination of the marine and terrestrial ecosystems. One of the most representative examples is the isotope 14C released into the atmosphere during nuclear tests, which is later integrated into the CO2, and then reaches the marine environment, by means of the ocean--atmosphere gas exchange, or the biosphere through the process of photosynthesis." In this article it is also quoted that most of these nuclear test and the most harmful ones were conducted by **Soviet Union**, a socialist union consisted of 15 countries, collapsed in 1991, and the **U.S**. When all articles that I have reviewed taken into account, the hazard of nuclear explosions for both living creatures and environment can be understood easily. However, since the research question, **Who is more responsible**, is not that easy. When the article @yang2003worldwide is examined, quote: "Since then there is evidence that 2039 additional explosions have been conducted by seven countries (China, France, India, Pakistan, the Soviet Union, the United Kingdom, and the United States) during 1945-1998, according to information in the Nuclear Explosion Database at the Center for Monitoring Research (CMR)." 1056 nuclear explosions were made by U.S and 715 by the Soviet Union, it is clear and easy to say by accordance of numerical observations made and recorded the U.s seems to be responsible for biological and environmental damage that occurred due to explosions. Since, in the article @pruavualie2014nuclear clears that the areas the **U.S** made nuclear test in its own mainland some disorders that have a huge relations with radioactivity such as **Thyroid Cancer** has been more common since the nuclear test had begun. However, to speak in more certain terms, more research and observations are needed.
 
 # Data
-The data set that has been chosen for this survey consists of 2046 observations. By making these huge amount of observations, 16 numerical and characteristic variables were used to obtain data frames. In the table below, "Location.Cordinates.Longitude", "Location.Cordinates.Latitude", Date.Month", and "Date.Year" have been examined in terms of values of "mean", "standard deviation", "min-", "max", and "median" in order to make assumptions. By looking the mean values of longitude and latitude of  nuclear explosions occurred, it can be observed by making research on these two data, most of explosions happened in Nevada, U.S. So with these information, it can be easily say that United States made most of explosions between 1945 and 1998.  
 
-```{r, echo=FALSE}
-library(xtable) 
-library(summarytools)
-st_options(lang = "en")
-```
+The data set that has been chosen for this survey consists of 2046 observations. By making these huge amount of observations, 16 numerical and characteristic variables were used to obtain data frames. Data set includes locations, countries and their regions made explosions, magnitudes of nuclear explosions, usage purpose of nuclear weapons, explosion dates by giving year, month and date, and explosion type.
 
-With the `echo=FALSE` option, prevent the codes from appearing in the derived pdf file and report your results in tables.
-
-```{r results='asis', echo=FALSE}
-
-```
-In addition to table, the graph in above shows the relationship between the number that are ranged from 0 to 175 of nuclear explosions and years between 1945 and 1998 that these explosions happened by using data that was used in previous research. This graph explains that most of nuclear explosions happened in 1962. This year, 1962, was the most dangerous and hardest time in terms of cold war @ekmen2021zorlayici. Both superpowers, United States and Soviet Union, were one step ahead nuclear war, so they made lots of nuclear weapon test in order to spread horror and terror to the enemy.
-Buraya harita ile igili yapılacak
 
 
 # Methods and Data Analysis
-In this section describe the methods that you use to achieve the purpose of the study. You should use the appropriate analysis methods (such as hypothesis tests and correlation analysis) that we covered in the class. If you want, you can also use other methods that we haven't covered. If you think some method is more suitable for the purpose of the analysis and the data set, you can use that method [@newbold:2003; @verzani:2014; @wickham:2014; @wooldridge:2015a].
 
-For example, if you are performing regression analysis, discuss your predicted equation in this section. Write your equations and mathematical expressions using $LaTeX$.
-
-$$
-Y_t = \beta_0 + \beta_N N_t + \beta_P P_t + \beta_I I_t + \varepsilon_t
-$$
-
-This section should also include different tables and plots. You can add histograms, scatter plots (such as Figure \@ref(fig:plot)), box plots, etc. Make the necessary references to your figures as shown in the previous sentence.
-
-
-```{r plot, fig.align='center', fig.cap='An Awesome Plot'}
- 
+```{r results='asis', echo=FALSE}
+nuclear_explosions <- read_csv("C:\\Users\\pc\\Desktop\\Final-work\\data\\nuclear_explosions.csv")
+ggplot(data = nuclear_explosions, aes(x = Date.Year)) +
+       geom_bar() + scale_x_continuous(name = "Years") +
+    scale_y_continuous(name = "Number of Explosions") +
+    ggtitle("Nuclear Explosions From 1945-1998")
 ```
 
+The graph in above shows the relationship between the number that are ranged from 0 to 175 of nuclear explosions and years between 1945 and 1998 that these explosions happened by using data that was used in previous research. This graph explains that most of nuclear explosions happened in 1962. This year, 1962, was the most dangerous and hardest time in terms of cold war @ekmen2021zorlayici. Both superpowers, United States and Soviet Union, were one step ahead nuclear war, so they made lots of nuclear weapon test in order to spread horror and terror to the enemy. In order to figure out which nation caused to more detonations,maps were created and used.
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(tinytex)
+library(dplyr)
+library(maps)
+nuclear_explosions <- read_csv("C:\\Users\\pc\\Desktop\\Final-work\\data\\nuclear_explosions.csv")
+world_map <- map_data("world")
+map <- ggplot() +
+  geom_polygon(data = world_map, aes(x = long, y = lat, group=group), fill = "lightgray") +
+  geom_point(data = nuclear_explosions, aes(x = Location.Cordinates.Longitude, y =Location.Cordinates.Latitude), color = "red", size = 2.1) +
+  labs(title = "The Map of Nuclear Detonations",
+     x = "Longitude",
+     y = "Latitude")
+
+print(map)
+```
+
+The map shows locations of nuclear explosions that took place between 1942 and 1998.There were 2046 detonations in total. However, some data lack of detonation coordinates, 24. On the maps that were created, a dot represents the number of nuclear explosions at that point. That is, each point can represent one or more nuclear explosions. The intensity of the points on the map shows the intensity of nuclear explosions in that area. Regions with higher intensity represent regions where more nuclear explosions occur.It can be very easily seen in this map that the majority of detonations occurred in the mainland of USA and Russia, in old name, Soviet Union. However, there are no man's lands that also were host for detonations. That is why two more maps were created to observe and determine who made these detonations in no man's land.It is important to mention that not all detonations are shown in map because of limitation of this data. Some detonation coordinates were recorded as latitude=0 and longitude=0 as it has been mentioned in previous paragraphs.
+
+```{r, echo=FALSE}
+filtered_data <- nuclear_explosions %>%
+  filter(Location.Cordinates.Latitude == 0, Location.Cordinates.Longitude == 0)
+```
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(tinytex)
+library(dplyr)
+library(maps)
+
+nuclear_explosions <- read_csv("C:\\Users\\pc\\Desktop\\Final-work\\data\\nuclear_explosions.csv")
+
+soviet_map <- map_data("world", region = c("Russia", "Kazakhstan", "Tajikistan", "Uzbekistan", "Kyrgyzstan","Turkmenistan", "Ukraine", "Estonia", "Lithuania", "Latvia","Armenia", "Georgia", "Azerbaijan
+","Belarus"))
+
+russia_data <- nuclear_explosions %>% 
+  filter(Location.Country == "USSR") %>% 
+  select(Location.Cordinates.Longitude, Location.Cordinates.Latitude)
+
+map_ru <- ggplot() +
+  geom_polygon(data = soviet_map, aes(x = long, y = lat, group = group), fill = "lightgray") +
+  geom_point(data = russia_data, aes(x = Location.Cordinates.Longitude, y = Location.Cordinates.Latitude), color = "blue", size = 1.1)  +
+  labs(title = "Soviet Union",
+     x = "Longitude",
+     y = "Latitude")
+
+print(map_ru)
+
+```
+
+This map shows the points of nuclear detonations on Soviet Union. It is important to note that all of these detonations were made by Soviet Union between 1945 and 1998 and all detonations had the same purpose and it was only testing.
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(tinytex)
+library(dplyr)
+library(maps)
+
+nuclear_explosions <- read_csv("C:\\Users\\pc\\Desktop\\Final-work\\data\\nuclear_explosions.csv")
+
+usa_map<- map_data("world", region = "USA")
+
+usa_data <- nuclear_explosions %>% 
+  filter(Location.Country == "USA") %>% 
+  select(Location.Cordinates.Longitude, Location.Cordinates.Latitude)
+
+map_usa <- ggplot() +
+  geom_polygon(data = usa_map, aes(x = long, y = lat, group = group), fill = "lightgray") +
+  geom_point(data = usa_data, aes(x = Location.Cordinates.Longitude, y = Location.Cordinates.Latitude), color = "black", size = 1.1)  +
+  labs(title = "USA",
+     x = "Longitude",
+     y = "Latitude")
+
+print(map_usa)
+
+```
+
+This map shows all detonations that USA made between 1945 and 1998. It is clear that USA caused nuclear detonations in both its mainland and other locations. These detonations were made in order to testing and usage in combat.(**1945** **Nagasaki** and **Hiroshima**) The black dots that represent explosions tend to concentrate in Nevada, USA. It is because USA has test center at this location. It is important to note that in Pacific regions that USA conducted nuclear test, cancer rates tend to increase @ruff2015humanitarian.
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(tinytex)
+library(dplyr)
+library(maps)
+country_counts <- nuclear_explosions %>% group_by(Location.Country) %>% count()
+library(ggplot2)
+
+bar_plot <- ggplot(country_counts, aes(x = Location.Country, y = n)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(x = "Country", y = "The Number of Nuclear Explosions", title = "Countries and Nuclear Detonations")
+
+print(bar_plot)
+
+```
+
+This graph shows the relationship between countries that exist in this data and the quantities of explosions. It can be understood by looking this graph that countries like China, France, India, Pakistan and UK also caused nuclear detonations but not as much as USA and USSR did. So it is clear that US is responsible for these damaging detonations.
 
 # Conclusion
-Summarize the results of your analysis in this section. Discuss to what extent your results responded to the research question you identified at the beginning and how this work could be improved in the future.
 
-**References section is created automatically by Rmarkdown. There is no need to change the references section in the draft file.**
-
-**_You shouldn't delete the last 3 lines. Those lines are required for References section._**
+Graphs and maps that have been created by using **nuclear_explosions** data in order to determine who is more responsible for these harmful nuclear detonations. By examining graphs and maps and taking articles that have been added Literature Review, its obvious that USA is responsible for these harmful explosions that occurred in the world between 1945 and 1998. Nuclear energy sources are beneficial for humanity and the world.It is an obvious reality, however, these nuclear energy sources must be used carefully and usage purpose should not be usage in combat or testing nuclear weapons. Otherwise, some disease that related with nuclear exposure can increase and the natural system of our world can be affected badly.
 
 \newpage
-# References {#references}
-<div id="refs"></div>
 
+# References {#references}
+
+::: {#refs}
+:::
