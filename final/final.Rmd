@@ -56,6 +56,23 @@ It is a very well documented fact that nuclear explosions destroy our environmen
 
 The data set that has been chosen for this survey consists of 2046 observations. By making these huge amount of observations, 16 numerical and characteristic variables were used to obtain data frames. Data set includes locations, countries and their regions made explosions, magnitudes of nuclear explosions, usage purpose of nuclear weapons, explosion dates by giving year, month and date, and explosion type.
 
+```{r echo=FALSE, results='asis'}
+library(summarytools)
+library(tidyverse)
+library(xtable)
+library(kableExtra)
+st_options(lang = "en")
+nuclear_explosions <- read_csv("C:\\Users\\pc\\Desktop\\Final-work\\data\\nuclear_explosions.csv")
+
+nuclear_explosions %>%
+  select("Location.Cordinates.Latitude", "Location.Cordinates.Longitude", "Date.Day", "Date.Month", "Date.Year","Data.Magnitude.Body") %>%
+  descr(stats = c("mean", "sd", "min", "med", "max"), transpose = TRUE) %>%
+  xtable(caption = "Summary Statistics" ,
+         label = "tab:summary" ,
+         align = c("l", "c", "c", "c", "c", "c")) %>%
+  print(booktabs= TRUE, comment=FALSE, caption.placement="top")
+```
+
 
 
 # Methods and Data Analysis
@@ -169,7 +186,7 @@ This graph shows the relationship between countries that exist in this data and 
 
 # Conclusion
 
-Graphs and maps that have been created by using **nuclear_explosions** data in order to determine who is more responsible for these harmful nuclear detonations. By examining graphs and maps and taking articles that have been added Literature Review, its obvious that USA is responsible for these harmful explosions that occurred in the world between 1945 and 1998. Nuclear energy sources are beneficial for humanity and the world.It is an obvious reality, however, these nuclear energy sources must be used carefully and usage purpose should not be usage in combat or testing nuclear weapons. Otherwise, some disease that related with nuclear exposure can increase and the natural system of our world can be affected badly.
+Graphs and maps that have been created by using **nuclear_explosions** data in order to determine who is more responsible for these harmful nuclear detonations. By examining first graph it is obvious that nuclear detonations had tendency to concentrate in year 1962 which shows that these explosions were made due to nuclear weapon testing in cold war era.First map tells us that dots that represent detonations tend to concentrate in Soviet and USA mainland which made me think if USSR or US is more responsible. However, after looking Second map, it can be understood that USSR only made nuclear testing in its mainland. When third table was examined it is seen that US made nuclear tests in around world in addition to its mainland. Also, US used nuclear power to living environment. When articles that were used in Literature Review are taken into consideration with all these maps and graphs, it can be seen that US can be a responsible for these destruction that have harmed to the world and people, especially in pacific @ruff2015humanitarian. Although, there have been some limitations in data, **nuclear_explosions**, such as lack of casualties, the rate of radiation that spread after nuclear detonations So there is no restrictions to say that US is more responsible rather than other countries that made nuclear explosions. This research can be helpful for researchers that may want to conduct research about locations and cancer rates to obtain connection between countries that have a nuclear arsenal and reason of cancer. It cannot be ignored that nuclear power is beneficial for humanity and the world in lots of ways. It provides renewable energy, low cost and etc. However, it should not be used for being a source for mass destruction weapons or directly to destroy nations. Otherwise, the world and humanity will not be able to last for long and Albert Einstein's words about war weapons can be reality. 
 
 \newpage
 
