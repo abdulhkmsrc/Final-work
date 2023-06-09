@@ -54,7 +54,7 @@ It is a very well documented fact that nuclear explosions destroy our environmen
 
 # Data
 
-The data set that has been chosen for this survey consists of 2046 observations. By making these huge amount of observations, 16 numerical and characteristic variables were used to obtain data frames. Data set includes locations, countries and their regions made explosions, magnitudes of nuclear explosions, usage purpose of nuclear weapons, explosion dates by giving year, month and date, and explosion type.
+The data set that has been chosen for this survey was found in <https://github.com/rfordatascience/tidytuesday/tree/master/data> and consists of 2046 observations. These observations were recorded according to governments' reports that made the explosions. So, some governments preferred not to give exact information to researchers. Due to this situation, in data, **nuclear_explosions** there were some NA data. These data were removed by using **na.omit** operator. Also, there are some numerical values that are equal **zero**.This data are not manipulated and left as what they have been. By making these huge amount of observations, 16 numerical and characteristic variables were used to obtain data frames. Data set includes locations, countries and their regions made explosions, magnitudes of nuclear explosions, usage purpose of nuclear weapons, explosion dates by giving year, month and date, explosion type, magnitude body and surface and yeild lower and upper as all of them are columns of data set. These data have been chosen to find answer who is more responsible for nuclear explosions that harmful for our environment and people. However, there are certain shortcomings in data. For example, the ratio of nuclear leak was not recorded in data. Also information about casualty, and damage rates. The variables that were chose to add in summary statistics are "Location.Cordinates.Latitude", "Location.Cordinates.Longitude", "Date.Day", "Date.Month", and "Date.Year. They were chose in order to be used in tables and graphs as numerical data. The summary table is in below. This table shows values of this variables in terms of "mean","sd","min","med", and "max". Median values of latitude and longitude give the almost exact coordinations of Nevada, US. This information is used in next sections.
 
 ```{r echo=FALSE, results='asis'}
 library(summarytools)
@@ -77,6 +77,7 @@ nuclear_explosions %>%
 
 # Methods and Data Analysis
 
+The data that was chosen is lack of some certain variables that can be used in scientific data test such as t-test. So, there is no testing method is used in this section. However, by using data from **nuclear_explosions**, maps, graphs and tables have been created to answer research question and find concrete results. In this section, there are 3 maps, and 2 graphs were created.  
 ```{r results='asis', echo=FALSE}
 nuclear_explosions <- read_csv("C:\\Users\\pc\\Desktop\\Final-work\\data\\nuclear_explosions.csv")
 ggplot(data = nuclear_explosions, aes(x = Date.Year)) +
@@ -164,7 +165,7 @@ print(map_usa)
 
 ```
 
-This map shows all detonations that USA made between 1945 and 1998. It is clear that USA caused nuclear detonations in both its mainland and other locations. These detonations were made in order to testing and usage in combat.(**1945** **Nagasaki** and **Hiroshima**) The black dots that represent explosions tend to concentrate in Nevada, USA. It is because USA has test center at this location. It is important to note that in Pacific regions that USA conducted nuclear test, cancer rates tend to increase @ruff2015humanitarian.
+This map shows all detonations that USA made between 1945 and 1998. It is clear that USA caused nuclear detonations in both its mainland and other locations. These detonations were made in order to testing and usage in combat.(**1945** **Nagasaki** and **Hiroshima**) The black dots that represent explosions tend to concentrate in Nevada, USA. In "data" section, it was indicated that median values of latitude and longitude of the data gives almost exact coordinations Nevada,US It is because USA has test center at this location. It is important to note that in Pacific regions that USA conducted nuclear test, cancer rates tend to increase @ruff2015humanitarian.
 
 ```{r, echo=FALSE}
 library(ggplot2)
